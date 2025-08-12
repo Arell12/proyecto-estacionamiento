@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Sistema de Estacionamiento</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        /* Aplicando Flexbox para que el footer esté al final de la página */
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+        .container {
+            flex-grow: 1; /* Esto hace que el contenido ocupe el espacio disponible */
+        }
+        footer {
+            margin-top: auto; /* Empuja el footer hacia abajo */
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Sistema de Estacionamiento</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <!-- Ícono de casa -->
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="../../index.html">
+                            <i class="bi bi-house-door-fill"></i> Inicio
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="row">
+            <!-- Tarjeta Eventos -->
+            <div class="col-md-3 mb-4">
+                <div class="card text-white bg-success h-100">
+                    <div class="card-body text-center">
+                        <i class="bi bi-calendar-event display-4 mb-3"></i>
+                        <h3 class="card-title">Eventos</h3>
+                        <p class="card-text">Administra y programa eventos especiales de estacionamiento.</p>
+                        <a href="eventos.html" class="btn btn-light">Ir a Eventos</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Tarjeta Horas Pico -->
+            <div class="col-md-3 mb-4">
+                <div class="card text-white bg-primary h-100">
+                    <div class="card-body text-center">
+                        <i class="bi bi-clock display-4 mb-3"></i>
+                        <h3 class="card-title">Horas Pico</h3>
+                        <p class="card-text">Gestiona y analiza los horarios de mayor ocupación.</p>
+                        <a href="horas_pico.html" class="btn btn-light">Ir a Horas Pico</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Tarjeta Reportes -->
+            <div class="col-md-3 mb-4">
+                <div class="card text-white bg-warning h-100">
+                    <div class="card-body text-center">
+                        <i class="bi bi-file-earmark-text display-4 mb-3"></i>
+                        <h3 class="card-title">Reportes</h3>
+                        <p class="card-text">Consulta y gestiona los reportes de incidencias.</p>
+                        <a href="reportes.html" class="btn btn-light">Ir a Reportes</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Tarjeta Registrar Usuarios -->
+            <div class="col-md-3 mb-4">
+                <div class="card text-white bg-info h-100">
+                    <div class="card-body text-center">
+                        <i class="bi bi-person-plus display-4 mb-3"></i>
+                        <h3 class="card-title">Usuarios</h3>
+                        <p class="card-text">Registra y administra usuarios del sistema.</p>
+                        <a href="usuarios.html" class="btn btn-light">Ir a Usuarios</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+<footer class="bg-dark text-white text-center py-4">
+    <div class="container">
+    <div class="d-flex justify-content-center mb-3">
+        <a href="#" class="text-white mx-2"><i class="bi bi-facebook"></i></a>
+        <a href="#" class="text-white mx-2"><i class="bi bi-instagram"></i></a>
+        <a href="#" class="text-white mx-2"><i class="bi bi-youtube"></i></a>
+        <a href="#" class="text-white mx-2"><i class="bi bi-linkedin"></i></a>
+    </div>
+    <p>© 2024 TecPark. Todos los derechos reservados. <a href="#" class="text-decoration-none text-white">Política de Privacidad</a></p>
+    </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

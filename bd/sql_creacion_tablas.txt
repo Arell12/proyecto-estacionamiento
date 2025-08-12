@@ -1,0 +1,128 @@
+-- Tablas sin dependencias externas
+CREATE TABLE Roles (
+    id_rol SERIAL PRIMARY KEY,
+    nombre_rol VARCHAR(50) UNIQUE NOT NULL,
+    descripcion TEXT
+);
+
+CREATE TABLE Marcas (
+    id_marca SERIAL PRIMARY KEY,
+    nombre_marca VARCHAR(50) UNIQUE NOT NULL
+);
+
+CREATE TABLE Anios (
+    id_anio SERIAL PRIMARY KEY,
+    anio INT UNIQUE NOT NULL
+);
+
+CREATE TABLE Tipos_Incidencia (
+    id_tipo_incidencia SERIAL PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    descripcion TEXT
+);
+
+-- Tablas con primera dependencia
+CREATE TABLE Usuarios (
+    id_usuario SERIAL PRIMARY KEY,
+    numero_control VARCHAR(20) UNIQUE NOT NULL,
+    nombre VARCHAR(50) NOT NULL,
+    apellidos VARCHAR(50) NOT NULL,
+    correo_electronico VARCHAR(100) UNIQUE NOT NULL,
+    fecha_nacimiento DATE,
+    telefono VARCHAR(15),
+    foto_perfil VARCHAR(255),
+    capacidades_diferentes BOOLEAN DEFAULT FALSE,
+    id_rol INT NOT NULL,
+    FOREIGN KEY (id_rol) REFERENCES Roles(id_rol)
+);
+
+CREATE TABLE Modelos (
+    id_modelo SERIAL PRIMARY KEY,
+    nombre_modelo VARCHAR(50) NOT NULL,
+    id_marca INT NOT NULL,
+    FOREIGN KEY (id_marca) REFERENCES Marcas(id_marca)
+);
+
+-- Tablas con segunda dependencia
+CREATE TABLE Datos_Auto (
+    id_datos_auto SERIAL PRIMARY KEY,
+    id_marca INT NOT NULL,
+    id_modelo INT NOT NULL,
+    id_anio INT NOT NULL,
+    FOREIGN KEY (id_marca) REFERENCES Marcas(id_marca),
+    FOREIGN KEY (id_modelo) REFERENCES Modelos(id_modelo),
+    FOREIGN KEY (id_anio) REFERENCES Anios(id_anio)
+);
+
+CREATE TABLE Estacionamientos (
+    id_estacionamiento SERIAL PRIMARY KEY,
+    numero_estacionamiento INT UNIQUE NOT NULL,
+    es_reservado BOOLEAN NOT NULL,
+    esta_ocupado BOOLEAN NOT NULL
+);
+
+-- Tablas con tercera dependencia
+CREATE TABLE Usuario_Automovil (
+    id_usuario_automovil SERIAL PRIMARY KEY,
+    id_usuario INT NOT NULL,
+    id_datos_auto INT NOT NULL,
+    placas VARCHAR(10) UNIQUE NOT NULL,
+    FOREIGN KEY (id_usuario) REFERENCES Usuarios(id_usuario),
+    FOREIGN KEY (id_datos_auto) REFERENCES Datos_Auto(id_datos_auto)
+);
+
+CREATE TABLE Credenciales (
+    id_credencial SERIAL PRIMARY KEY,
+    id_usuario INT NOT NULL,
+    contrasena VARCHAR(255) NOT NULL,
+    FOREIGN KEY (id_usuario) REFERENCES Usuarios(id_usuario) ON DELETE CASCADE
+);
+
+CREATE TABLE HorasPico (
+    id_hora_pico SERIAL PRIMARY KEY,
+    id_usuario INT NOT NULL,
+    dia VARCHAR(10) NOT NULL,
+    hora_inicio TIME NOT NULL,
+    hora_fin TIME NOT NULL,
+    FOREIGN KEY (id_usuario) REFERENCES Usuarios(id_usuario)
+);
+
+CREATE TABLE EventosEspeciales (
+    id_evento SERIAL PRIMARY KEY,
+    id_usuario INT NOT NULL,
+    nombre_evento VARCHAR(100) NOT NULL,
+    fecha_evento DATE NOT NULL,
+    hora_evento TIME NOT NULL,
+    descripcion_evento TEXT NOT NULL,
+    FOREIGN KEY (id_usuario) REFERENCES Usuarios(id_usuario)
+);
+
+-- Tablas con cuarta dependencia
+CREATE TABLE Historial (
+    id_historial SERIAL PRIMARY KEY,
+    id_usuario_automovil INT NOT NULL,
+    id_estacionamiento INT NOT NULL,
+    fecha_entrada DATE NOT NULL,
+    hora_entrada TIME NOT NULL,
+    fecha_salida DATE,
+    hora_salida TIME,
+    FOREIGN KEY (id_usuario_automovil) REFERENCES Usuario_Automovil(id_usuario_automovil),
+    FOREIGN KEY (id_estacionamiento) REFERENCES Estacionamientos(id_estacionamiento)
+);
+
+CREATE TABLE Reportes (
+    id_reporte SERIAL PRIMARY KEY,
+    id_usuario_reporta INT NOT NULL,
+    id_usuario_resuelve INT,
+    id_estacionamiento INT NOT NULL,
+    id_tipo_incidencia INT NOT NULL,
+    descripcion_problema TEXT NOT NULL,
+    fotografia VARCHAR(255),
+    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    esta_solucionado BOOLEAN DEFAULT FALSE,
+    esta_proceso BOOLEAN DEFAULT FALSE,
+    FOREIGN KEY (id_usuario_reporta) REFERENCES Usuarios(id_usuario) ON DELETE CASCADE,
+    FOREIGN KEY (id_usuario_resuelve) REFERENCES Usuarios(id_usuario),
+    FOREIGN KEY (id_estacionamiento) REFERENCES Estacionamientos(id_estacionamiento),
+    FOREIGN KEY (id_tipo_incidencia) REFERENCES Tipos_Incidencia(id_tipo_incidencia)
+);

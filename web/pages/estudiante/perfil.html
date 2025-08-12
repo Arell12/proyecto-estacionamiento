@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de Usuario</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .profile-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 5px solid #0d6efd;
+            margin: auto;
+        }
+
+        .profile-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-photo-upload {
+            display: none;
+        }
+
+        .vehicle-info {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .btn-primary-custom {
+            background-color: #0d6efd;
+            border-color: #0d6efd;
+        }
+
+        .editable {
+            cursor: pointer;
+        }
+
+        .form-control:disabled {
+            background-color: #e9ecef;
+        }
+
+        .btn-outline-primary-custom {
+            border-color: #0d6efd;
+            color: #0d6efd;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <!-- Header -->
+        <div class="d-flex justify-content-between align-items-center">
+            <h1>Perfil de Usuario</h1>
+            <a href="estacionamiento.html" class="btn btn-outline-primary-custom">
+                <i class="fas fa-arrow-left"></i> Volver al Inicio
+            </a>
+        </div>
+
+        <div class="row mt-4">
+            <!-- Foto de perfil -->
+            <div class="col-md-4 text-center">
+                <div class="profile-photo">
+                    <img id="profile-image" src="" alt="Foto de perfil" class="rounded-circle img-thumbnail">
+                </div>
+                <input type="file" id="photo-upload" class="profile-photo-upload" accept="image/*" style="display: none;">
+                <button class="btn btn-primary-custom mt-3" onclick="document.getElementById('photo-upload').click()">Cambiar Foto</button>
+                
+                <!-- Botón para cambiar contraseña -->
+                <button class="btn btn-primary-custom mt-3" data-bs-toggle="modal" data-bs-target="#changePasswordModal">Cambiar Contraseña</button>
+            </div>
+
+            <!-- Información del usuario -->
+            <div class="col-md-8">
+                <h4>Información del Usuario</h4>
+                <div class="row mb-2">
+                    <label class="col-sm-4 fw-bold">Número de Control:</label>
+                    <div class="col-sm-8">
+                        <input type="text" id="control-number" class="form-control" disabled>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <label class="col-sm-4 fw-bold">Nombre Completo:</label>
+                    <div class="col-sm-8">
+                        <input type="text" id="full-name" class="form-control" disabled>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <label class="col-sm-4 fw-bold">Fecha de Nacimiento:</label>
+                    <div class="col-sm-8">
+                        <input type="date" id="birth-date" class="form-control" disabled>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <label class="col-sm-4 fw-bold">Teléfono:</label>
+                    <div class="col-sm-8">
+                        <input type="text" id="phone" class="form-control" disabled>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <label class="col-sm-4 fw-bold">Correo Electrónico:</label>
+                    <div class="col-sm-8">
+                        <input type="text" id="email" class="form-control" disabled>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <label class="col-sm-4 fw-bold">Capacidades Diferentes:</label>
+                    <div class="col-sm-8">
+                        <input type="text" id="capacidad-diferente" class="form-control" disabled>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Información del vehículo -->
+        <div class="vehicle-info mt-4">
+            <h4>Información del Vehículo</h4>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-2">
+                        <span class="fw-bold">Marca:</span> <span id="vehicle-brand"></span>
+                    </div>
+                    <div class="mb-2">
+                        <span class="fw-bold">Modelo:</span> <span id="vehicle-model"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mb-2">
+                        <span class="fw-bold">Año:</span> <span id="vehicle-year"></span>
+                    </div>
+                    <div class="mb-2">
+                        <span class="fw-bold">Matrícula:</span> <span id="vehicle-plate"></span>
+                    </div>
+                </div>
+            </div>
+            <button id="edit-vehicle" class="btn btn-primary-custom">Editar Vehículo</button>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white text-center py-4">
+        <div class="container">
+            <p>© 2024 TecPark. Todos los derechos reservados. <a href="#" class="text-decoration-none text-white">Política de Privacidad</a></p>
+        </div>
+    </footer>
+
+    <!-- Modal para cambiar contraseña -->
+    <div class="modal fade" id="changePasswordModal" tabindex="-1" aria-labelledby="changePasswordModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="changePasswordModalLabel">Cambiar Contraseña</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body">
+            <div class="mb-3">
+                <label for="new-password" class="form-label">Nueva Contraseña</label>
+                <input type="password" class="form-control" id="new-password" placeholder="Ingresa la nueva contraseña">
+            </div>
+            <div class="mb-3">
+                <label for="confirm-password" class="form-label">Confirmar Nueva Contraseña</label>
+                <input type="password" class="form-control" id="confirm-password" placeholder="Confirma la nueva contraseña">
+            </div>
+            <div id="password-error" class="text-danger" style="display:none;"></div>
+            <div id="password-success" class="text-success" style="display:none;"></div>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-primary-custom" id="submit-password-change">Enviar</button>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/scripts/config.js" defer></script>
+    <script src="../../assets/scripts/firebaseConfig.js" type="module"></script>
+    <script src="../../assets/scripts/estudiante/subir_foto.js" type="module"></script>
+    <script src="../../assets/scripts/estudiante/perfil_e.js" type="module"></script>
+</body>
+</html>

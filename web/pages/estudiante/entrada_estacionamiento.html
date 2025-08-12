@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Estacionamiento</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f4f7fc;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .container {
+            margin-top: 50px;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            max-width: 600px;
+        }
+
+        .title {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #2c3e50;
+        }
+
+        .message {
+            margin-top: 20px;
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            display: none;
+        }
+
+        .message-success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .message-error {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+        .parking-space {
+            width: 115px;
+            height: 80px;
+            border-radius: 5px;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+        }
+
+        .libre { background-color: #28a745; }
+        .ocupado { background-color: #dc3545; }
+        .reservado { background-color: #007bff; }
+
+        /* Custom styles */
+        .parking-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .parking-space:hover {
+            opacity: 0.8;
+        }
+
+        .parking-space.selected {
+            border: 2px solid #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="container my-4" id="screen1">
+        <h1 class="title">Registro de Estacionamiento</h1>
+        
+        <form>
+            <div class="mb-3">
+                <label for="controlNumber" class="form-label">Número de Control</label>
+                <input 
+                    type="text" 
+                    id="controlNumber" 
+                    name="controlNumber" 
+                    class="form-control" 
+                    placeholder="Ingrese número de control"
+                    required
+                >
+            </div>
+
+            <div id="message" class="message" style="display:none;"></div>
+
+            <button 
+                type="button" 
+                id="continuarBtn" 
+                class="btn btn-primary w-100"
+            >
+                <i class="fas fa-arrow-right icon"></i> Continuar
+            </button>
+        </form>
+    </div>
+
+    <div class="container my-4">
+        <h2 class="title">Estado del Estacionamiento</h2>
+        <div id="parking-grid" class="row g-3">
+        </div>
+    </div>
+
+    <!-- Modal Entrada Marcada -->
+    <div class="modal fade" id="entradaModal" tabindex="-1" aria-labelledby="entradaModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content bg-success text-white">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="entradaModalLabel">Entrada Marcada</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+            <div class="modal-body" id="entradaModalBody">
+            <!-- Contenido dinámico de la entrada -->
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Salida Marcada -->
+    <div class="modal fade" id="salidaModal" tabindex="-1" aria-labelledby="salidaModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content bg-info text-white">
+                <div class="modal-header">
+                <h5 class="modal-title" id="salidaModalLabel">Salida Marcada</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+            <div class="modal-body" id="salidaModalBody">
+            <!-- Contenido dinámico de la salida -->
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3 mt-5">
+        <p>&copy; 2024 Sistema de Estacionamiento Estudiantil. Todos los derechos reservados.</p>
+        <p>Desarrollado por <strong>Equipo</strong></p>
+    </footer>
+
+    <script src="../../assets/scripts/config.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+    <script src="../../assets/scripts/estudiante/entrada_estaciona.js"></script>
+</body>
+</html>

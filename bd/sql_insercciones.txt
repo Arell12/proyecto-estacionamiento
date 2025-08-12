@@ -1,0 +1,189 @@
+-- Inserción de Roles
+INSERT INTO Roles (nombre_rol, descripcion) VALUES
+('Estudiante', 'Rol para estudiantes de la universidad'),
+('Guardia', 'Rol para personal de seguridad del estacionamiento'),
+('Administrativo', 'Rol para personal administrativo de la universidad');
+
+-- Inserción de Marcas
+INSERT INTO Marcas (nombre_marca) VALUES
+('Toyota'),
+('Volkswagen'),
+('Ford'),
+('Chevrolet'),
+('Honda'),
+('Nissan'),
+('Mazda'),
+('BMW'),
+('Mercedes-Benz'),
+('Audi'),
+('Hyundai');
+
+-- Inserción de Años
+INSERT INTO Anios (anio) VALUES
+(2015), (2016), (2017), (2018), (2019), 
+(2020), (2021), (2022), (2023), (2024);
+
+-- Inserción de Tipos de Incidencia
+INSERT INTO Tipos_Incidencia (nombre, descripcion) VALUES
+('Estacionamiento Ocupado', 'Incidencia por espacio de estacionamiento ocupado indebidamente'),
+('Daño a Vehículo', 'Reporte de daño causado a un vehículo'),
+('Problema de Señalización', 'Problemas con señales o marcas del estacionamiento'),
+('Acceso Restringido', 'Problemas con el acceso al estacionamiento'),
+('Vehículo Sospechoso', 'Reporte de vehículo que parece no pertenecer a la universidad');
+
+-- Inserción de Usuarios
+INSERT INTO Usuarios (
+    numero_control, nombre, apellidos, correo_electronico, 
+    fecha_nacimiento, telefono, foto_perfil, capacidades_diferentes, id_rol
+) VALUES
+-- Usuarios Estudiantes
+('2020301001', 'Luis', 'Martínez Pérez', 'luis.martinez@universidad.edu.mx', 
+ '2000-05-15', '5512345678', NULL, FALSE, 1),
+('2020301002', 'Ana', 'González Ruiz', 'ana.gonzalez@universidad.edu.mx', 
+ '2001-07-22', '5587654321', NULL, FALSE, 1),
+('2020301003', 'Carlos', 'Rodríguez López', 'carlos.rodriguez@universidad.edu.mx', 
+ '1999-11-30', '5543216789', NULL, TRUE, 1),
+('2020301004', 'María', 'Hernández García', 'maria.hernandez@universidad.edu.mx', 
+ '2002-03-12', '5598765432', NULL, FALSE, 1),
+('2020301005', 'Diego', 'Sánchez Torres', 'diego.sanchez@universidad.edu.mx', 
+ '2001-09-25', '5567891234', NULL, FALSE, 1),
+-- Usuarios Guardia
+('G001', 'Juan', 'Pérez Ramírez', 'juan.perez@universidad.edu.mx', 
+ '1985-04-10', '5523456789', NULL, FALSE, 2),
+('G002', 'Roberto', 'Gómez Flores', 'roberto.gomez@universidad.edu.mx', 
+ '1990-08-18', '5534567890', NULL, FALSE, 2),
+-- Usuario Administrativo
+('ADM001', 'Laura', 'Díaz Mendoza', 'laura.diaz@universidad.edu.mx', 
+ '1978-12-05', '5545678901', NULL, FALSE, 3);
+
+-- Inserción de Modelos
+INSERT INTO Modelos (nombre_modelo, id_marca) VALUES
+('Corolla', 1),
+('Jetta', 2),
+('Fiesta', 3),
+('Spark', 4),
+('Civic', 5),
+('Versa', 6),
+('3', 7),
+('X3', 8),
+('Clase C', 9),
+('A4', 10),
+('Elantra', 11);
+
+-- Inserción de Datos Auto
+INSERT INTO Datos_Auto (id_marca, id_modelo, id_anio) VALUES
+(1, 1, 1),  -- Toyota Corolla 2015
+(2, 2, 2),  -- Volkswagen Jetta 2016
+(3, 3, 3),  -- Ford Fiesta 2017
+(4, 4, 4),  -- Chevrolet Spark 2018
+(5, 5, 5),  -- Honda Civic 2019
+(6, 6, 6),  -- Nissan Versa 2020
+(7, 7, 7),  -- Mazda 3 2021
+(8, 8, 8),  -- BMW X3 2022
+(9, 9, 9),  -- Mercedes-Benz Clase C 2023
+(10, 10, 10),  -- Audi A4 2024
+(11, 11, 4);  -- Hyundai Elantra 2018
+
+-- Inserción de Estacionamientos
+INSERT INTO Estacionamientos (numero_estacionamiento, es_reservado, esta_ocupado) VALUES
+(101, FALSE, FALSE),
+(102, FALSE, FALSE),
+(103, FALSE, FALSE),
+(104, FALSE, FALSE),
+(105, TRUE, FALSE),
+(201, FALSE, FALSE),
+(202, FALSE, FALSE),
+(203, FALSE, FALSE),
+(204, TRUE, FALSE),
+(205, FALSE, FALSE),
+(301, FALSE, FALSE);
+
+-- Inserción de Usuario_Automovil (solo para estudiantes)
+INSERT INTO Usuario_Automovil (id_usuario, id_datos_auto, placas) VALUES
+(1, 1, 'ABC-123'),
+(2, 2, 'DEF-456'),
+(3, 3, 'GHI-789'),
+(4, 4, 'JKL-012'),
+(5, 5, 'MNO-345');
+
+-- Inserción de Credenciales
+INSERT INTO Credenciales (id_usuario, contrasena) VALUES
+(1, '$2b$10$randomhash123estudiante1'),
+(2, '$2b$10$randomhash456estudiante2'),
+(3, '$2b$10$randomhash789estudiante3'),
+(4, '$2b$10$randomhash012estudiante4'),
+(5, '$2b$10$randomhash345estudiante5'),
+(6, '$2b$10$randomhash678guardia1'),
+(7, '$2b$10$randomhash901guardia2'),
+(8, '$2b$10$randomhash234admin1');
+
+-- Inserción de Historial
+INSERT INTO Historial (id_usuario_automovil, id_estacionamiento, fecha_entrada, hora_entrada, fecha_salida, hora_salida) VALUES
+(1, 1, '2024-02-01', '08:30:00', '2024-02-01', '14:45:00'),
+(2, 2, '2024-02-01', '09:15:00', '2024-02-01', '15:20:00'),
+(3, 3, '2024-02-01', '07:45:00', '2024-02-01', '13:30:00'),
+(4, 4, '2024-02-01', '10:00:00', '2024-02-01', '16:10:00'),
+(5, 5, '2024-02-01', '08:00:00', '2024-02-01', '15:00:00'),
+(1, 6, '2024-02-02', '08:45:00', '2024-02-02', '14:30:00'),
+(2, 7, '2024-02-02', '09:30:00', '2024-02-02', '15:45:00'),
+(3, 8, '2024-02-02', '07:30:00', '2024-02-02', '13:15:00'),
+(4, 9, '2024-02-02', '10:15:00', '2024-02-02', '16:00:00'),
+(5, 10, '2024-02-02', '08:15:00', '2024-02-02', '14:50:00'),
+(1, 11, '2024-02-03', '08:20:00', '2024-02-03', '15:10:00');
+
+-- Inserción de Reportes (estudiantes reportan, guardias resuelven)
+INSERT INTO Reportes (
+    id_usuario_reporta, id_usuario_resuelve, id_estacionamiento, 
+    id_tipo_incidencia, descripcion_problema, fotografia, 
+    fecha_creacion, esta_solucionado, esta_proceso
+) VALUES
+(1, 6, 1, 1, 'Estacionamiento ocupado sin permiso', NULL, 
+ '2024-02-01 09:15:00', FALSE, TRUE),
+(2, 7, 2, 2, 'Rayón en la puerta del vehículo', NULL, 
+ '2024-02-01 10:30:00', FALSE, FALSE),
+(3, 6, 3, 3, 'Señalización borrosa', NULL, 
+ '2024-02-01 11:45:00', TRUE, FALSE),
+(4, 7, 4, 4, 'Problemas con la entrada del estacionamiento', NULL, 
+ '2024-02-01 13:20:00', FALSE, TRUE),
+(5, 6, 5, 5, 'Vehículo sospechoso estacionado', NULL, 
+ '2024-02-01 14:55:00', FALSE, FALSE),
+(1, 7, 6, 1, 'Bloqueo de espacio reservado', NULL, 
+ '2024-02-02 08:10:00', TRUE, FALSE),
+(2, 6, 7, 2, 'Golpe en el parachoques', NULL, 
+ '2024-02-02 09:45:00', FALSE, TRUE),
+(3, 7, 8, 3, 'Falta de marcas en el pavimento', NULL, 
+ '2024-02-02 11:20:00', FALSE, FALSE),
+(4, 6, 9, 4, 'Puerta de acceso no funciona', NULL, 
+ '2024-02-02 13:55:00', TRUE, FALSE),
+(5, 7, 10, 5, 'Auto desconocido en zona restringida', NULL, 
+ '2024-02-02 15:30:00', FALSE, TRUE),
+(1, 6, 11, 1, 'Ocupación indebida de espacio', NULL, 
+ '2024-02-03 09:05:00', FALSE, FALSE);
+
+-- Inserción de Horas Pico (solo para administrativo)
+INSERT INTO HorasPico (id_usuario, dia, hora_inicio, hora_fin) VALUES
+(8, 'Lunes', '07:00:00', '09:00:00'),
+(8, 'Lunes', '12:30:00', '14:30:00'),
+(8, 'Lunes', '17:00:00', '19:00:00'),
+(8, 'Martes', '07:30:00', '09:30:00'),
+(8, 'Martes', '13:00:00', '15:00:00'),
+(8, 'Martes', '18:00:00', '20:00:00'),
+(8, 'Miércoles', '08:00:00', '10:00:00'),
+(8, 'Miércoles', '14:00:00', '16:00:00'),
+(8, 'Jueves', '07:15:00', '09:15:00'),
+(8, 'Viernes', '08:30:00', '10:30:00'),
+(8, 'Viernes', '13:30:00', '15:30:00');
+
+-- Inserción de Eventos Especiales (solo para administrativo)
+INSERT INTO EventosEspeciales (id_usuario, nombre_evento, fecha_evento, hora_evento, descripcion_evento) VALUES
+(8, 'Graduación Semestral', '2024-07-15', '10:00:00', 'Ceremonia de graduación del semestre de verano'),
+(8, 'Inicio de Semestre', '2024-08-20', '08:00:00', 'Bienvenida a nuevos estudiantes'),
+(8, 'Jornada de Inducción', '2024-08-21', '09:00:00', 'Presentación de servicios universitarios'),
+(8, 'Feria de Posgrados', '2024-09-10', '14:00:00', 'Información sobre programas de maestría y doctorado'),
+(8, 'Día del Estudiante', '2024-05-23', '12:00:00', 'Actividades y celebración para estudiantes'),
+(8, 'Simposio de Investigación', '2024-11-05', '09:30:00', 'Presentación de proyectos de investigación'),
+(8, 'Expo Emprendimiento', '2024-10-15', '10:30:00', 'Muestra de proyectos emprendedores'),
+(8, 'Conferencia Internacional', '2024-09-25', '15:00:00', 'Conferencia de expertos internacionales'),
+(8, 'Semana Cultural', '2024-06-10', '18:00:00', 'Eventos artísticos y culturales'),
+(8, 'Torneo Deportivo', '2024-04-18', '16:00:00', 'Competencias deportivas interuniversitarias'),
+(8, 'Feria de Intercambio', '2024-03-12', '11:00:00', 'Información sobre programas de intercambio');

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Estacionamiento</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f5f5f5;
+        }
+        .parking-space {
+            width: 130px;
+            height: 80px;
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+        .parking-space.available {
+            background-color: #2ecc71;
+            color: white;
+        }
+        .parking-space.occupied {
+            background-color: #e74c3c;
+            color: white;
+        }
+        .parking-space.disabled {
+            background-color: #3498db;
+            color: white;
+        }
+        .section {
+            display: none;
+        }
+        .section.active {
+            display: block;
+        }
+        .card-custom {
+            text-align: center;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="#">Sistema de Estacionamiento</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#" data-section="parking-section">
+                            <i class="bi bi-parking"></i> Estacionamiento
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-section="history-section">
+                            <i class="bi bi-clock-history"></i> Historial
+                        </a>
+                    </li>
+                </ul>
+                <a href="perfil.html" class="btn btn-outline-primary">
+                    <i class="bi bi-person"></i> Perfil
+                </a>
+                <a href="reportes.html" class="btn btn-outline-primary">
+                    <i class="bi bi-file-earmark-text"></i> Reportes
+                </a>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="../../index.html">
+                            <i class="bi bi-house-door-fill"></i> Inicio
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mt-5 pt-5">
+        <!-- Estacionamiento -->
+        <div id="parking-section" class="section active">
+            <h2 class="mb-4">Estado del Estacionamiento</h2>
+            <div class="row g-3" id="parking-grid"></div>
+
+            <div class="card mt-4 bg-success text-white card-custom">
+                <div class="card-body">
+                    <h5 class="card-title">Eventos Especiales</h5>
+                    <p class="card-text">No hay eventos programados para hoy</p>
+                </div>
+            </div>
+            <div class="card mt-4 bg-info text-white card-custom">
+                <div class="card-body">
+                    <h5 class="card-title">Horas Pico</h5>
+                    <p class="card-text"></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Historial -->
+<div id="history-section" class="section">
+    <h2>Historial de Estacionamiento</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Fecha Entrada</th>
+                <th>Fecha Salida</th>
+                <th>Matrícula</th>
+                <th>Lugar asignado</th>
+                <th>Hora Entrada</th>
+                <th>Hora Salida</th>
+            </tr>
+        </thead>
+        <tbody id="history-tbody">
+            <!-- Las filas se generarán dinámicamente -->
+        </tbody>
+    </table>
+</div>
+
+    </main>
+
+    <!-- boton -->
+<button class="btn btn-warning btn-lg rounded-circle shadow position-fixed" style="bottom: 20px; right: 20px;" data-bs-toggle="modal" data-bs-target="#reportModal">
+    <i class="bi bi-exclamation-circle"></i>
+</button>
+
+<!-- Reportar problema -->
+<div class="modal fade" id="reportModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Reportar Problema</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="reportForm">
+                    <div class="mb-3">
+                        <label class="form-label">Número de Estacionamiento</label>
+                        <input type="text" class="form-control" id="parking-number" placeholder="Ej: 12" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Descripción del Problema</label>
+                        <textarea class="form-control" id="problem-description" rows="4" placeholder="Describa el problema aquí..." required></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Adjuntar Foto</label>
+                        <input type="file" class="form-control" id="upload-photo" accept="image/*">
+                        <small class="text-muted">Puede tomar una foto o subir una de su galería.</small>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Enviar Reporte</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="confirmationModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Reporte Enviado</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <p>Tu reporte ha sido enviado exitosamente. ¡Gracias por tu colaboración!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <!-- JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/scripts/config.js"></script> <!-- Archivo de configuración -->
+    <script src="../../assets/scripts/estudiante/historial.js"></script>
+    <script type="module" src="../../assets/scripts/estudiante/estacionamiento_e.js"></script> <!-- Lógica de la página -->
+</body>
+</html>

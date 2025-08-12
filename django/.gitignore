@@ -1,0 +1,29 @@
+# Entorno virtual
+venv/
+.env
+.env.*
+
+# Archivos de base de datos locales
+*.sqlite3
+db.sqlite3
+
+# Archivos de compilación y caché de Python
+__pycache__/
+*.py[cod]
+*.log
+
+# Archivos temporales
+*.pot
+*.pyc
+*.pyo
+*.pyd
+*.swp
+*.swo
+
+# Archivos generados por Django
+/staticfiles/
+/media/
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db

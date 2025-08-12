@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horas Pico</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="dashboard.html">Horas Pico</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="dashboard.html">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-danger" href="login.html">Cerrar Sesión</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+        <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#hourModal" id="addPeakHourBtn">
+            <i class="bi bi-plus-circle me-1"></i> Agregar Hora Pico
+        </button>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Día</th>
+                    <th>Hora</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="peakHourTable">
+                <!-- Las filas se agregarán dinámicamente desde el JS -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Modal Agregar/Editar Hora Pico -->
+    <div class="modal fade" id="hourModal" tabindex="-1" aria-labelledby="hourModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="hourModalLabel">Agregar/Editar Hora Pico</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="hourForm">
+                        <div class="mb-3">
+                            <label for="dayInput" class="form-label">Día</label>
+                            <input type="text" class="form-control" id="dayInput" placeholder="Ejemplo: Lunes" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="horaInicioInput" class="form-label">Hora Inicio</label>
+                            <input type="time" class="form-control" id="horaInicioInput" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="horaFinInput" class="form-label">Hora Fin</label>
+                            <input type="time" class="form-control" id="horaFinInput" required>
+                        </div>
+                        <input type="hidden" id="editHoraPicoId">
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="saveButton">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/scripts/config.js"></script>
+    <script src="../../assets/scripts/admin/horas_pico.js"></script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historial de Reportes</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f5f5f5;
+        }
+        .table th, .table td {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="#">Sistema de Estacionamiento</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="perfil.html">
+                            <i class="bi bi-person"></i> Perfil
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main -->
+    <main class="container mt-5 pt-5">
+        <h2 class="mb-4">Historial de Reportes Enviados</h2>
+        <p>En esta sección puedes consultar los reportes que has enviado anteriormente sobre problemas en el estacionamiento.</p>
+        
+    <!-- Reportes -->
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Fecha de Envío</th>
+                <th>Número de Estacionamiento</th>
+                <th>Descripción del Problema</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+        <tbody id="reports-tbody">
+            <!-- Las filas se generarán dinámicamente -->
+        </tbody>
+    </table>
+    </main>
+
+    <!-- Botón para regresar al menú principal -->
+    <div class="row mb-3">
+        <div class="col">
+            <a href="estacionamiento.html" class="btn btn-light w-100">
+                <i class="bi bi-house-door"></i> Regresar al Menú Principal
+            </a>
+        </div>
+    </div>
+</div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/scripts/config.js"></script>
+    <script src="../../assets/scripts/estudiante/reportes.js"></script>
+</body>
+</html>

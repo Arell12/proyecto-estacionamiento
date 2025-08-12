@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Estacionamiento - Detalles de Espacio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #F4F4F4;
+        }
+
+        .btn-custom {
+            background-color: #0d6efd;
+            border-color: #0d6efd;
+        }
+
+        .btn-outline-custom {
+            border-color: #0d6efd;
+            color: #0d6efd;
+        }
+
+        .btn-custom:hover, .btn-outline-custom:hover {
+            background-color: #0b5ed7;
+            border-color: #0b5ed7;
+            color: #ffffff;
+        }
+
+        .form-label {
+            font-weight: bold;
+        }
+
+        .form-control[readonly] {
+            background-color: #e9ecef;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin-top: 30px;
+        }
+
+        .card {
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            background-color: #fff;
+        }
+
+        .card-header {
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .row > .col {
+            margin-bottom: 1rem;
+        }
+
+        .btn-custom, .btn-outline-custom {
+            border-radius: 8px;
+        }
+
+        .btn-success, .btn-secondary {
+            border-radius: 8px;
+        }
+
+        .d-none {
+            display: none;
+        }
+
+        .mt-4, .mb-3 {
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                Detalles del Espacio
+            </div>
+            <div class="card-body">
+                <form id="detallesEspacioForm">
+                    <div class="form-group mb-3">
+                        <label for="nombreEstudiante" class="form-label">Nombre del Estudiante</label>
+                        <input type="text" class="form-control" id="nombreEstudiante" readonly>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="auto" class="form-label">Auto</label>
+                        <input type="text" class="form-control" id="auto" readonly>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="matricula" class="form-label">Matrícula</label>
+                        <input type="text" class="form-control" id="matricula" readonly>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="numeroLugar" class="form-label">Número de Lugar</label>
+                        <input type="text" class="form-control" id="numeroLugar" readonly>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="muevoNumeroLugar" class="form-label">Cambio de Lugar</label>
+                        <select class="form-select" id="muevoNumeroLugar" disabled></select>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-4">
+                            <button type="button" class="btn btn-custom w-100" id="btnEditar">Editar</button>
+                        </div>
+                        <div class="col-4">
+                            <button type="button" class="btn btn-success w-100 d-none" id="btnGuardar">Guardar</button>
+                        </div>
+                        <div class="col-4">
+                            <button type="button" class="btn btn-secondary w-100" id="btnAceptar">Aceptar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="col">
+                <a href="gestion_espacio.html" class="btn btn-outline-custom w-100">Regresar a Gestión de Espacios</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/scripts/config.js"></script>
+    <script src="../../assets/scripts/guardia/detalles_espacio.js"></script>
+</body>
+</html>

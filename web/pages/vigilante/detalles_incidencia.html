@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Estacionamiento - Detalles de Incidencia</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #F4F4F4;
+        }
+        h2 {
+            color: #002855;
+            font-weight: bold;
+        }
+        .btn-success:hover {
+            background-color: #45A149;
+        }
+        .btn-primary:hover {
+            background-color: #004080;
+        }
+        .btn-secondary:hover {
+            background-color: #757575;
+        }
+        .card-custom {
+            text-align: center;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .card-custom .card-body {
+            flex-grow: 1;
+            padding: 2rem;
+        }
+        .card-header {
+            font-size: 1.25rem;
+        }
+        .container {
+            min-height: 100vh;
+        }
+        .image-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Sistema de Estacionamiento</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Regresar</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container d-flex flex-column justify-content-between">
+        <div class="row mb-3">
+            <div class="col">
+                <h2>Detalles de Incidencia</h2>
+            </div>
+        </div>
+
+        <!-- Tarjeta para tipo de incidencia -->
+        <div class="row flex-grow-1 mb-3">
+            <div class="col-12">
+                <div class="card bg-info text-white card-custom">
+                    <div class="card-header">
+                        <i class="bi bi-info-circle"></i> Tipo de Incidencia
+                    </div>
+                    <div class="card-body">
+                        <select class="form-select" id="tipoIncidencia"></select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tarjeta para descripción de incidencia -->
+        <div class="row flex-grow-1 mb-3">
+            <div class="col-12">
+                <div class="card bg-warning text-dark card-custom">
+                    <div class="card-header">
+                        <i class="bi bi-exclamation-circle"></i> Descripción del Problema
+                    </div>
+                    <div class="card-body">
+                        <textarea class="form-control" id="descripcionIncidencia" rows="4" readonly></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección para la imagen de la incidencia -->
+        <div class="row image-container mb-3">
+            <div class="col">
+                <div class="card bg-light text-dark">
+                    <div class="card-header">
+                        <i class="bi bi-camera"></i> Imagen de la Incidencia
+                    </div>
+                    <div class="card-body">
+                        <img src="" alt="Imagen de la incidencia" id="imagenIncidencia" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tarjeta para encargado que resolvió -->
+        <div class="row flex-grow-1 mb-3">
+            <div class="col-12">
+                <div class="card bg-primary text-white card-custom">
+                    <div class="card-header">
+                        <i class="bi bi-person-check"></i> Encargado que resolvió
+                    </div>
+                    <div class="card-body">
+                        <select class="form-select" id="encargadoResolver"></select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Botones para marcar la incidencia como resuelta o pendiente -->
+        <div class="row mt-4 mb-3">
+            <div class="col d-flex justify-content-center">
+                <button type="button" class="btn btn-success w-50 me-2" id="btnMarcarResuelta">
+                    <i class="bi bi-check-circle"></i> Marcar como Resuelta
+                </button>
+                <button type="button" class="btn btn-secondary w-50" id="btnMarcarPendiente">
+                    <i class="bi bi-pause-circle"></i> Marcar como En Proceso
+                </button>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col">
+                <a href="index.html" class="btn btn-light w-100">
+                    <i class="bi bi-house-door"></i> Regresar al Menú Principal
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/scripts/config.js"></script>
+    <script src="../../assets/scripts/guardia/detalles_incidencia.js"></script>
+</body>
+</html>
