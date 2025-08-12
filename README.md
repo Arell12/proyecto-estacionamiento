@@ -1,10 +1,10 @@
-# Sistema de Gestión de Estacionamiento
+# Sistema de Gestión de Estacionamiento 🅿️
 
-## Descripción
+## 📝 Descripción
 
 Sistema web para la gestión y administración de estacionamientos universitarios. Permite a estudiantes, guardias y administrativos gestionar espacios, reportar incidencias, programar eventos y monitorear el uso del estacionamiento en tiempo real.
 
-## Características Principales
+## 🌐 Características Principales
 
 ### 👨‍🎓 Para Estudiantes
 - **Gestión de Espacios**: Visualización de espacios ocupados y libres
@@ -27,7 +27,7 @@ Sistema web para la gestión y administración de estacionamientos universitario
 - **Administración de Reportes**: Consulta y gestión completa de incidencias
 - **Gestión de Usuarios**: Registro y administración de usuarios del sistema
 
-## Estructura del Proyecto
+## 📁 Estructura del Proyecto
 
 ```
 proyecto-estacionamiento/
@@ -50,7 +50,7 @@ proyecto-estacionamiento/
 └── db/              # Respaldo de la bd, SQl para creación e inserciones de PostgreSQL
 ```
 
-## Tecnologías Utilizadas
+## 🚀 Tecnologías Utilizadas
 
 ### Backend
 - **Django REST Framework** - API REST
@@ -70,7 +70,7 @@ proyecto-estacionamiento/
 - Cuenta en Firebase (para almacenamiento de imágenes)
 - Cuenta en Hostinger (para servicio de correo)
 
-### Configuración del Backend
+### 📦 Configuración del Backend
 
 1. **Clonar el repositorio**
 
@@ -118,7 +118,7 @@ proyecto-estacionamiento/
    python manage.py runserver
    ```
 
-### Configuración del Frontend
+### 📦  Configuración del Frontend
 
 1. **Navegar al directorio frontend**
    ```bash
@@ -319,7 +319,7 @@ Todos los ViewSets registrados soportan las siguientes operaciones estándar:
 
 Este proyecto fue desarrollado con fines académicos. 
 
-## Contacto
+## 🙋‍♂️ Contacto
 
-[Carlos Armando Arellano Cruz] - [carlosarell36@gmail.com]
-[Maria Guadalupe Martinez Hernandez] - [malumarher710@gmail.com]
+- [Carlos Armando Arellano Cruz] - [carlosarell36@gmail.com]
+- [Maria Guadalupe Martinez Hernandez] - [malumarher710@gmail.com]

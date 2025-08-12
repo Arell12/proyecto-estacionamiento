@@ -32,13 +32,13 @@ ALLOWED_HOSTS = ['*']
 
 # Configuración del correo con Hostinger (Puerto 465 - SSL)
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'tu_host_hostinger'  # Cambia si tu host es diferente
+EMAIL_HOST = ''  # Cambia si tu host es diferente
 EMAIL_PORT = 000  # Puerto para SSL
 EMAIL_USE_TLS = False  # TLS debe estar desactivado
 EMAIL_USE_SSL = True  # Activar SSL para el puerto 465
-EMAIL_HOST_USER = 'tu_email@tudominio.com'  # Reemplaza con tu correo
-EMAIL_HOST_PASSWORD = 'tu_contraseña'  # Reemplaza con tu contraseña
-DEFAULT_FROM_EMAIL = 'tu_email@tudominio.com'  # Opcional: Remitente por defecto
+EMAIL_HOST_USER = ''  # Reemplaza con tu correo
+EMAIL_HOST_PASSWORD = ''  # Reemplaza con tu contraseña
+DEFAULT_FROM_EMAIL = ''  # Opcional: Remitente por defecto
 
 
 
